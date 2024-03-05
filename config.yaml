@@ -8,10 +8,12 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
-carpentry: 'incubator'
+carpentry: 'l2d'
+varnish: 'LearnToDiscover/varnish'
+sandpaper: 'LearnToDiscover/sandpaper@l2d'
 
 # Overall title for pages.
-title: 'Lesson Title'
+title: 'Case Study: Antibodies'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: '2024-03-04'
@@ -27,13 +29,19 @@ life_cycle: 'pre-alpha'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/milanmlft/case-study-antibodies'
+source: 'https://github.com/LearnToDiscover/case-study-antibodies'
 
 # Default branch of your lesson
 branch: 'main'
 
 # Who to contact if there are any issues
 contact: 'team@carpentries.org'
+
+# Generate PDFs of episodes?
+pdf: FALSE
+
+# Generate ipynb notebooks of episodes?
+ipynb: FALSE
 
 # Navigation ------------------------------------------------
 #
@@ -58,17 +66,17 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
-- introduction.Rmd
+episodes:
+- Machine_Learning_Part1.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
