@@ -1,24 +1,21 @@
 ---
-title: An R Markdown document converted from "./Machine_Learning_Part1.ipynb"
-output: html_document
+title: Separating Mouse and Human Antibody Sequences using Protein Encoding and Machine Learning Classifiers
 ---
 
-# Separating Mouse and Human Antibody Sequences using Protein Encoding and Machine Learning Classifiers
-
-### Questions:
+::::::::::::::::::::::::::::::::::::: questions
 
 - How may we create a machine learning classifier that can tell apart two groups of proteins?
-
 - How may we check for overfitting in a trained machine learning classifier?
 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Objectives:
-    
+::::::::::::::::::::::::::::::::::::: objectives
+
 - Understand how protein sequences can become readable to machine learning predictors
-
 - Check for overfitted data by testing with a totally naive dataset
+::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Introduction 
+## Introduction 
 
 If we want to generate a classifier that observes the differences between two groups of protein seequences, then we need to extract numerical information from our sequences. This is called encoding and can be done through a variety of ways inlcuding residue level encoding of each amino acid in your sequences with a 1x20 vector, representing the possibility of 20 amino acids at each residue. This is called One Hot Encoding, but often leads to a sparse dataset which is not suitable for machine learning tasks, and each sequence must be spaced out so they are of equal length. Instead, in this example we use the physiochemical properties that may be calculated from the sequence as our numeric information (ElAbd *et al.*, 2020). 
 
@@ -26,7 +23,7 @@ Antibodies are made up of two heavy and two light chains, however, the functiona
 
 In this exercise, we will use a sample of 1000 Human and 1000 Mouse paired antibodies taken from the Observed Antibody Space (Olsen *et al.*, 2022) and develop a machine learning classifier to separate them. Firstly, we will use Kidera Factors (Nakai *et al.*, 1988) and Propythia (Sequeira *et al.*, 2022) to generate our encodings from an input of Fasta formatted sequences. Secondly, we will split those encodings into training and test datasets for a selection of machine learning classifiers and plot our results, comparing both methods of encodings.
 
-### References
+## References
 
 ElAbd, H., Bromberg, Y., Hoarfrost, A., Lenz, T., Franke, A., & Wendorff, M. (2020). Amino acid encoding for deep learning applications. BMC Bioinformatics, 21(1), 235. https://doi.org/10.1186/s12859-020-03546-x
 
@@ -177,7 +174,7 @@ def Get_Kidera_Encoded_Sequences(fasta):
 ```
 
 ```{python}
-input_fasta = './HumanMouseOAS_VH_VL_paired_data.faa'
+input_fasta = 'data/HumanMouseOAS_VH_VL_paired_data.faa'
 
 joined_dataframe_VH_VL = Get_Kidera_Encoded_Sequences(input_fasta)
 print(joined_dataframe_VH_VL)
@@ -310,13 +307,13 @@ def Get_dataset(fasta):
 
 ```{python}
 ### Input Fasta and Run Dataset###
-input_fasta = './HumanMouseOAS_VH_VL_paired_data.faa'
+input_fasta = 'data/HumanMouseOAS_VH_VL_paired_data.faa'
 
 #joined_dataframe_VH_VL = Get_dataset(input_fasta)
 
 #Optionally save dataframe as a CSV to simply reload it in future
 #joined_dataframe_VH_VL.to_csv('./HumanMouseOAS_VH_VL_paired_data.faa_Full_descriptors')#
-joined_dataframe_VH_VL = read_csv('./HumanMouseOAS_VH_VL_paired_data.faa_Full_descriptors.csv', header = 0)
+joined_dataframe_VH_VL = read_csv('data/HumanMouseOAS_VH_VL_paired_data.faa_Full_descriptors.csv', header = 0)
 ```
 
 ### Do it yourself
@@ -408,9 +405,16 @@ ax.set_xticklabels(classifiers, rotation=-80);
 
 From the above chart, we can see that the best performing predictors are ADA_Boost, GaussinNB, DecisionTree and SVC are the best performing classifier, wheras both Gaussian and KMeans are the worst performing with negative MCC scores.
 
+::::::::::::::::::::::::::::::::::::: challenge
+
 ### Questions
 - Which encoding method produced overall the best results? Why could this be? Hint: think of the size of both sets of encodings
 - What could be the advantages and disadvantages of both sets of encodings?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::: challenge
 
 ## End of Chapter Exercise: Testing our Classifiers on a Naïve Dataset
 
@@ -425,8 +429,12 @@ The file below has 20 human and 20 mouse sequences which are held back from our 
 
 `naive_fasta = './Naive_dataset.faa.txt'`
 
-## Keypoints
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - Protein sequences must be numerically encoded to be readable by machine learning algorithms.
 - It is necessary to test your classifier with multiple models and multiple encoding methods to find which works the best
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
