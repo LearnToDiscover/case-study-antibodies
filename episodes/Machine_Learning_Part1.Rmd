@@ -54,12 +54,6 @@ As this is a large package, rather than importing the whole package, it is bette
 import sys
 import pandas as pd
 from pandas import read_csv
-sys.path.append('../src/')
-sys.path.append('')
-from propythia.sequence import ReadSequence
-sequence=ReadSequence()
-from propythia.descriptors import Descriptor
-
 
 ##Data preparation###
 from sklearn.utils import check_random_state, shuffle
@@ -67,10 +61,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.preprocessing import StandardScaler
 import numpy as np
-from numpy import pi, linspace, cos, sin, append, ones, zeros, hstack, vstack, intp
-from numpy import mgrid, linspace, c_, arange, mean, array
-from numpy.random import uniform, seed
-
 
 ##Machine Learning Models###
 from sklearn.neural_network import MLPClassifier
@@ -97,7 +87,6 @@ from matplotlib.pyplot import subplots, axes, scatter, xticks
 from matplotlib.colors import ListedColormap
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
 from sklearn.metrics.cluster import adjusted_rand_score
 from sklearn import metrics
 from sklearn.metrics import matthews_corrcoef
@@ -244,8 +233,8 @@ for i in classifiers:
 fig, ax = plt.subplots(figsize=(8,6))
 plt.suptitle('Performance of Machine Learning Classifiers Against Mouse and Human Antibodies', fontsize=20)
 
-bins = arange(len(classifiers))
-ax.bar(arange(len(scores)), scores)
+bins = np.arange(len(classifiers))
+ax.bar(np.arange(len(scores)), scores)
 ax.set_ylabel('Matthews Correlation Coefficient')
 ax.set_xlabel('Classifiers')
 ax.set_xticks(bins)
@@ -395,8 +384,8 @@ for i in classifiers:
 fig, ax = plt.subplots(figsize=(8,6))
 plt.suptitle('Performance of Machine Learning Classifiers Against Mouse and Human Antibodies', fontsize=20)
 
-bins = arange(len(classifiers))
-ax.bar(arange(len(scores)), scores)
+bins = np.arange(len(classifiers))
+ax.bar(np.arange(len(scores)), scores)
 ax.set_ylabel('Matthews Correlation Coefficient')
 ax.set_xlabel('Classifiers')
 ax.set_xticks(bins)
@@ -437,4 +426,3 @@ The file below has 20 human and 20 mouse sequences which are held back from our 
 - It is necessary to test your classifier with multiple models and multiple encoding methods to find which works the best
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
